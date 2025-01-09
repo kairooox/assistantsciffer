@@ -37,10 +37,11 @@ async def gcash(interaction: discord.Interaction):
         )
         print(f"Error: {e}")
 
-# Run the bot
-TOKEN = "MTMyNjg0OTM1MTgwODQ1NDcwOA.GK-nAB.tgcTF51FBx7uDUNBtPcg5hmKljr7m5b5FgApP0"  # Replace with your bot token
-bot.run(TOKEN)
+    # Fetch the bot token from environment variables
+    bot_token = os.getenv("DISCORD_BOT_TOKEN")  # Make sure your .env file has the DISCORD_BOT_TOKEN key
 
-
-
+    if not bot_token:
+        raise ValueError("DISCORD_BOT_TOKEN environment variable is not set.")
+    
+    bot.run(bot_token)
 # MTMyNjg0OTM1MTgwODQ1NDcwOA.GK-nAB.tgcTF51FBx7uDUNBtPcg5hmKljr7m5b5FgApP0
