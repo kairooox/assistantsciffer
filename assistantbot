@@ -66,3 +66,4 @@ flask_thread.start()
         raise ValueError("DISCORD_BOT_TOKEN environment variable is not set.")
 
     bot.run(bot_token)
+#
