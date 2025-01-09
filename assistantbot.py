@@ -25,7 +25,7 @@ async def on_ready():
 @bot.tree.command(name="gcash", description="Send the GCash QR code or image")
 async def gcash(interaction: discord.Interaction):
     # Path to the GCash image
-    image_path = "C:/Users/migs/Desktop/ScifferBot/Assistant/gcashqr.jpg"
+    image_path = "gcashqr.jpg"
 
     try:
         # Send the image
