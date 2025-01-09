@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
+import os
+from flask import Flask
+from threading import Thread
+from dotenv import load_dotenv
 
 # Bot setup
 intents = discord.Intents.default()
@@ -36,6 +40,15 @@ async def gcash(interaction: discord.Interaction):
             ephemeral=True
         )
         print(f"Error: {e}")
+
+def run_flask():
+    # Run the Flask app in a separate thread to avoid blocking the bot
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+
+if __name__ == "__main__":
+    # Run Flask in a separate thread so it doesn't block the bot
+    t = Thread(target=run_flask)
+    t.start()
 
     # Fetch the bot token from environment variables
     bot_token = os.getenv("DISCORD_BOT_TOKEN")  # Make sure your .env file has the DISCORD_BOT_TOKEN key
